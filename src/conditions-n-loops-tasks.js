@@ -21,9 +21,7 @@
  *  0  => true
  *  -5 => false
  */
-function isPositive(/* number */) {
-  throw new Error('Not implemented');
-}
+const isPositive = (number) => number >= 0;
 
 /**
  * Returns the maximum of three numbers without using Array and Math classes methods.
@@ -149,7 +147,7 @@ function isPalindrome(/* str */) {
  *
  * @example:
  *  'qwerty', 'q'     => 0
- *  'qwerty', 'е'     => 4
+ *  'qwerty', 'е'     => 2
  *  'qwerty', 'Q'     => -1
  *  'qwerty', 'p'     => -1
  */
