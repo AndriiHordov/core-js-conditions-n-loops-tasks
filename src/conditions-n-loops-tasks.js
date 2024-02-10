@@ -426,8 +426,44 @@ function rotateMatrix(matrix) {
  *  [2, 9, 5, 9]    => [2, 5, 9, 9]
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
-function sortByAsc(/* arr */) {
-  throw new Error('Not implemented');
+function sortByAsc(arr, leftPointer = 0, rightPointer = arr.length - 1) {
+  const swapElements = (array, left, right) => {
+    const arrCopy = array;
+    [arrCopy[left], arrCopy[right]] = [arrCopy[right], arrCopy[left]];
+  };
+  const divide = (source, pointerLeft, pointerRight) => {
+    let left = pointerLeft;
+    let right = pointerRight;
+    const middle = source[Math.floor((left + right) / 2)];
+
+    while (left <= right) {
+      while (source[left] < middle) {
+        left += 1;
+      }
+      while (source[right] > middle) {
+        right -= 1;
+      }
+      if (left <= right) {
+        swapElements(source, left, right);
+        left += 1;
+        right -= 1;
+      }
+    }
+    return left;
+  };
+
+  if (arr.length <= 1) return arr;
+
+  let index = divide(arr, leftPointer, rightPointer);
+
+  if (leftPointer < index - 1) {
+    index -= 1;
+    sortByAsc(arr, leftPointer, index);
+  }
+  if (rightPointer > index) {
+    sortByAsc(arr, index, rightPointer);
+  }
+  return arr;
 }
 
 /**
