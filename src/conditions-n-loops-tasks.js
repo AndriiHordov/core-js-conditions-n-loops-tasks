@@ -376,7 +376,7 @@ function getSpiralMatrix(size) {
       index += 1;
     }
   }
-  if (size % 2 === 1) {
+  if (size % 2) {
     const center = Math.floor(size / 2);
     result[center][center] = size * size;
   }
